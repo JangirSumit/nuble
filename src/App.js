@@ -1,6 +1,8 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import move from "./content/move.png";
+import hourglass from "./content/hourglass.png";
 
 function App() {
   return (
@@ -9,11 +11,55 @@ function App() {
       <div style={{}}>
         <div
           style={{
+            width: "150px",
+            height: "300px",
+            display: "inline-block",
+            marginTop: "100px",
+            float: "left",
+            marginLeft: "20px"
+          }}
+        >
+          <div
+            style={{
+              color: "#2582BF",
+              padding: "5px 10px",
+              fontWeight: "bold",
+              fontSize: "18px",
+              textAlign: "left"
+            }}
+          >
+            <img
+              alt="move"
+              src={move}
+              style={{ height: "16px", width: "18px", paddingRight: "5px" }}
+            />
+            <span>MOVES</span>
+          </div>
+          <div
+            style={{
+              color: "#2582BF",
+              padding: "5px 10px",
+              fontWeight: "bold",
+              fontSize: "18px",
+              textAlign: "left"
+            }}
+          >
+            <img
+              alt="move"
+              src={hourglass}
+              style={{ height: "16px", width: "18px", paddingRight: "5px" }}
+            />
+            TIME
+          </div>
+        </div>
+        <div
+          style={{
             background: "#65B7CD",
             width: "500px",
             height: "500px",
             display: "inline-block",
-            verticalAlign: "top"
+            verticalAlign: "top",
+            marginTop: "100px"
           }}
         ></div>
         <div
@@ -22,19 +68,30 @@ function App() {
             height: "650px",
             width: "400px",
             display: "inline-block",
-            verticalAlign: "top"
+            verticalAlign: "top",
+            float: "right",
+            marginTop: "100px",
+            marginRight: "20px"
           }}
         >
           <h3 style={{ color: "#2582BF" }}>Your Moves</h3>
         </div>
       </div>
-      <div style={{ color: "#72D3F3", display: "inline-block" }}>
-        <p>Difficulty level</p>
+      <div style={{ color: "#72D3F3", display: "inline-block", width: "100%" }}>
+        <p
+          style={{
+            color: "#2584B2",
+            textTransform: "uppercase",
+            fontWeight: "bold"
+          }}
+        >
+          Difficulty level
+        </p>
         <button
           style={{
-            background: "#B9E7F7",
+            background: "#2584B2",
             padding: "10px",
-            width: "120px",
+            width: "200px",
             color: "#72D3F3",
             fontWeight: "bold",
             margin: "5px"
@@ -44,9 +101,9 @@ function App() {
         </button>
         <button
           style={{
-            background: "#B9E7F7",
+            background: "#2584B2",
             padding: "10px",
-            width: "120px",
+            width: "200px",
             color: "#72D3F3",
             fontWeight: "bold",
             margin: "5px"
@@ -56,9 +113,9 @@ function App() {
         </button>
         <button
           style={{
-            background: "#B9E7F7",
+            background: "#2584B2",
             padding: "10px",
-            width: "120px",
+            width: "200px",
             color: "#72D3F3",
             fontWeight: "bold",
             margin: "5px"
@@ -68,9 +125,9 @@ function App() {
         </button>
         <button
           style={{
-            background: "#B9E7F7",
+            background: "#2584B2",
             padding: "10px",
-            width: "120px",
+            width: "200px",
             color: "#72D3F3",
             fontWeight: "bold",
             margin: "5px"
