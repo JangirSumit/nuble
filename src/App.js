@@ -20,6 +20,8 @@ class App extends Component {
     };
   }
 
+  handleTileClick(position) {}
+
   render() {
     return (
       <div className="App">
@@ -170,7 +172,12 @@ class App extends Component {
               flexWrap: "wrap"
             }}
           >
-            {<Tiles tiles={this.state.gameState[0]} />}
+            {
+              <Tiles
+                tiles={this.state.gameState[0]}
+                handleTileClick={this.handleTileClick.bind(this)}
+              />
+            }
           </div>
         </div>
         {/* Bottom block */}

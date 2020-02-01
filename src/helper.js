@@ -34,4 +34,8 @@ function shuffle(array) {
   return array;
 }
 
+function calculate2dPosition(matSize, index) {
+  return;
+}
+
 export { listToMatrix, shuffle };
