@@ -51,6 +51,43 @@ function App() {
             />
             TIME
           </div>
+          <br></br>
+          <button
+            style={{
+              background: "#F7941D",
+              width: "150px",
+              color: "#fff",
+              marginTop: "15px",
+              padding: "10px",
+              fontWeight: "bold"
+            }}
+          >
+            UNDO
+          </button>
+          <button
+            style={{
+              background: "#8CC63E",
+              width: "150px",
+              color: "#fff",
+              marginTop: "15px",
+              padding: "10px",
+              fontWeight: "bold"
+            }}
+          >
+            NEW GAME
+          </button>
+          <button
+            style={{
+              background: "#CF145B",
+              width: "150px",
+              color: "#fff",
+              marginTop: "15px",
+              padding: "10px",
+              fontWeight: "bold"
+            }}
+          >
+            AUTO SAVE
+          </button>
         </div>
         <div
           style={{
