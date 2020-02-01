@@ -2,6 +2,7 @@ import { Component } from "react";
 
 class Tile extends Component {
   render() {
+    let t = this.props.t;
     return (
       <div key={t} className="tile" style={{ background: t ? "" : "#5DA8BD" }}>
         {t ? t : " "}
