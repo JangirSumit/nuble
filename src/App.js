@@ -5,6 +5,8 @@ import move from "./content/move.png";
 import hourglass from "./content/hourglass.png";
 
 function App() {
+  let items = [...Array(15).keys()];
+  let tiles = [...items.map(t => t + 1), null];
   return (
     <div className="App">
       <div style={{ background: "#F4B323", height: "80px" }}></div>
@@ -59,7 +61,9 @@ function App() {
               color: "#fff",
               marginTop: "15px",
               padding: "10px",
-              fontWeight: "bold"
+              fontWeight: "bold",
+              border: "1px",
+              boxShadow: "2px 2px 5px #888"
             }}
           >
             UNDO
@@ -71,7 +75,9 @@ function App() {
               color: "#fff",
               marginTop: "15px",
               padding: "10px",
-              fontWeight: "bold"
+              fontWeight: "bold",
+              border: "1px",
+              boxShadow: "2px 2px 5px #888"
             }}
           >
             NEW GAME
@@ -83,7 +89,9 @@ function App() {
               color: "#fff",
               marginTop: "15px",
               padding: "10px",
-              fontWeight: "bold"
+              fontWeight: "bold",
+              border: "1px",
+              boxShadow: "2px 2px 5px #888"
             }}
           >
             AUTO SAVE
@@ -96,7 +104,8 @@ function App() {
             height: "500px",
             display: "inline-block",
             verticalAlign: "top",
-            marginTop: "100px"
+            marginTop: "100px",
+            borderRadius: "5px"
           }}
         ></div>
         <div
@@ -108,7 +117,8 @@ function App() {
             verticalAlign: "top",
             float: "right",
             marginTop: "100px",
-            marginRight: "20px"
+            marginRight: "20px",
+            borderRadius: "5px"
           }}
         >
           <h3 style={{ color: "#2582BF" }}>Your Moves</h3>
@@ -131,7 +141,9 @@ function App() {
             width: "200px",
             color: "#72D3F3",
             fontWeight: "bold",
-            margin: "5px"
+            margin: "5px",
+            border: "1px",
+            boxShadow: "2px 2px 5px #888"
           }}
         >
           EASY
@@ -143,7 +155,9 @@ function App() {
             width: "200px",
             color: "#72D3F3",
             fontWeight: "bold",
-            margin: "5px"
+            margin: "5px",
+            border: "1px",
+            boxShadow: "2px 2px 5px #888"
           }}
         >
           MEDIUM
@@ -155,7 +169,9 @@ function App() {
             width: "200px",
             color: "#72D3F3",
             fontWeight: "bold",
-            margin: "5px"
+            margin: "5px",
+            border: "1px",
+            boxShadow: "2px 2px 5px #888"
           }}
         >
           HARD
@@ -167,7 +183,9 @@ function App() {
             width: "200px",
             color: "#72D3F3",
             fontWeight: "bold",
-            margin: "5px"
+            margin: "5px",
+            border: "1px",
+            boxShadow: "2px 2px 5px #888"
           }}
         >
           CUSTOM
