@@ -36,98 +36,114 @@ function App() {
         ></img>
         <span style={{ verticalAlign: "middle" }}>NUBLE</span>
       </div>
-      {/* Center block */}
-      <div align="center">
-        {/* First Block */}
+      {/* First Block */}
+      <div
+        style={{
+          width: "150px",
+          height: "300px",
+          float: "left",
+          position: "absolute",
+          left: "25px",
+          top: "170px"
+        }}
+      >
         <div
           style={{
-            width: "150px",
-            height: "300px",
-            display: "inline-block",
-            marginTop: "100px",
-            float: "left",
-            marginLeft: "20px"
+            color: "#2582BF",
+            padding: "5px 10px",
+            fontWeight: "bold",
+            fontSize: "18px",
+            textAlign: "left"
           }}
         >
-          <div
-            style={{
-              color: "#2582BF",
-              padding: "5px 10px",
-              fontWeight: "bold",
-              fontSize: "18px",
-              textAlign: "left"
-            }}
-          >
-            <img
-              alt="move"
-              src={move}
-              style={{ height: "16px", width: "18px", paddingRight: "5px" }}
-            />
-            <span>MOVES</span>
-          </div>
-          <div
-            style={{
-              color: "#2582BF",
-              padding: "5px 10px",
-              fontWeight: "bold",
-              fontSize: "18px",
-              textAlign: "left"
-            }}
-          >
-            <img
-              alt="move"
-              src={hourglass}
-              style={{ height: "16px", width: "18px", paddingRight: "5px" }}
-            />
-            TIME
-          </div>
-          <br></br>
-          <button
-            style={{
-              background: "#F7941D",
-              width: "150px",
-              color: "#fff",
-              marginTop: "15px",
-              padding: "10px",
-              fontWeight: "bold",
-              border: "1px",
-              boxShadow: "2px 2px 5px #888",
-              cursor: "pointer"
-            }}
-          >
-            UNDO
-          </button>
-          <button
-            style={{
-              background: "#8CC63E",
-              width: "150px",
-              color: "#fff",
-              marginTop: "15px",
-              padding: "10px",
-              fontWeight: "bold",
-              border: "1px",
-              boxShadow: "2px 2px 5px #888",
-              cursor: "pointer"
-            }}
-          >
-            NEW GAME
-          </button>
-          <button
-            style={{
-              background: "#CF145B",
-              width: "150px",
-              color: "#fff",
-              marginTop: "15px",
-              padding: "10px",
-              fontWeight: "bold",
-              border: "1px",
-              boxShadow: "2px 2px 5px #888",
-              cursor: "pointer"
-            }}
-          >
-            AUTO SAVE
-          </button>
+          <img
+            alt="move"
+            src={move}
+            style={{ height: "16px", width: "18px", paddingRight: "5px" }}
+          />
+          <span>MOVES</span>
         </div>
+        <div
+          style={{
+            color: "#2582BF",
+            padding: "5px 10px",
+            fontWeight: "bold",
+            fontSize: "18px",
+            textAlign: "left"
+          }}
+        >
+          <img
+            alt="move"
+            src={hourglass}
+            style={{ height: "16px", width: "18px", paddingRight: "5px" }}
+          />
+          TIME
+        </div>
+        <br></br>
+        <button
+          style={{
+            background: "#F7941D",
+            width: "150px",
+            color: "#fff",
+            marginTop: "15px",
+            padding: "10px",
+            fontWeight: "bold",
+            border: "1px",
+            boxShadow: "2px 2px 5px #888",
+            cursor: "pointer"
+          }}
+        >
+          UNDO
+        </button>
+        <button
+          style={{
+            background: "#8CC63E",
+            width: "150px",
+            color: "#fff",
+            marginTop: "15px",
+            padding: "10px",
+            fontWeight: "bold",
+            border: "1px",
+            boxShadow: "2px 2px 5px #888",
+            cursor: "pointer"
+          }}
+        >
+          NEW GAME
+        </button>
+        <button
+          style={{
+            background: "#CF145B",
+            width: "150px",
+            color: "#fff",
+            marginTop: "15px",
+            padding: "10px",
+            fontWeight: "bold",
+            border: "1px",
+            boxShadow: "2px 2px 5px #888",
+            cursor: "pointer"
+          }}
+        >
+          AUTO SAVE
+        </button>
+      </div>
+      {/* Third Block */}
+      <div
+        style={{
+          background: "#96E5F4",
+          height: "650px",
+          width: "400px",
+          verticalAlign: "top",
+          borderRadius: "5px",
+          position: "absolute",
+          top: "170px",
+          right: "25px"
+        }}
+      >
+        <h3 style={{ color: "#2582BF" }}>Your Moves</h3>
+      </div>
+
+      {/* Center block */}
+      <div align="center">
         {/* Second Block */}
         <div
           style={{
@@ -143,31 +159,26 @@ function App() {
         >
           {tiles.map(t => {
             return (
-              <div className="tile" style={{ background: t ? "" : "#5DA8BD" }}>
+              <div
+                key={t}
+                className="tile"
+                style={{ background: t ? "" : "#5DA8BD" }}
+              >
                 {t ? t : " "}
               </div>
             );
           })}
         </div>
-        {/* Third Block */}
-        <div
-          style={{
-            background: "#96E5F4",
-            height: "650px",
-            width: "400px",
-            display: "inline-block",
-            verticalAlign: "top",
-            float: "right",
-            marginTop: "100px",
-            marginRight: "20px",
-            borderRadius: "5px"
-          }}
-        >
-          <h3 style={{ color: "#2582BF" }}>Your Moves</h3>
-        </div>
       </div>
       {/* Bottom block */}
-      <div style={{ color: "#72D3F3", display: "inline-block", width: "100%" }}>
+      <div
+        style={{
+          color: "#72D3F3",
+          position: "absolute",
+          bottom: "25px",
+          width: "100%"
+        }}
+      >
         <p
           style={{
             color: "#2584B2",
