@@ -4,8 +4,11 @@
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  width: "64px";
+  height: "64px";
+  padding-top: "10px";
+  vertical-align: "middle";
+  padding-right: "10px";
 }
 
 @media (prefers-reduced-motion: no-preference) {

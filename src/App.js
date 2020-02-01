@@ -1,13 +1,15 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import { shuffle } from "./helper";
 import move from "./content/move.png";
 import hourglass from "./content/hourglass.png";
 import nuble from "./content/nuble-logo.png";
 
 function App() {
   let items = [...Array(15).keys()];
+  items = shuffle(items);
   let tiles = [...items.map(t => t + 1), null];
+
   return (
     <div className="App">
       {/* Top Header */}
