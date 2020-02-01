@@ -177,7 +177,7 @@ function App() {
         style={{
           color: "#72D3F3",
           position: "absolute",
-          bottom: "25px",
+          bottom: "50px",
           width: "100%"
         }}
       >
