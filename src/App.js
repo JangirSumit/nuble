@@ -3,14 +3,42 @@ import logo from "./logo.svg";
 import "./App.css";
 import move from "./content/move.png";
 import hourglass from "./content/hourglass.png";
+import nuble from "./content/nuble-logo.png";
 
 function App() {
   let items = [...Array(15).keys()];
   let tiles = [...items.map(t => t + 1), null];
   return (
     <div className="App">
-      <div style={{ background: "#F4B323", height: "80px" }}></div>
-      <div style={{}}>
+      {/* Top Header */}
+      <div
+        style={{
+          background: "#F4B323",
+          height: "80px",
+          width: "100%",
+          textAlign: "center",
+          fontWeight: "bold",
+          fontSize: "30px",
+          color: "#fff",
+          display: "inline-block"
+        }}
+      >
+        <img
+          alt="nuble"
+          src={nuble}
+          style={{
+            width: "64px",
+            height: "64px",
+            paddingTop: "10px",
+            verticalAlign: "middle",
+            paddingRight: "10px"
+          }}
+        ></img>
+        <span style={{ verticalAlign: "middle" }}>NUBLE</span>
+      </div>
+      {/* Center block */}
+      <div align="center">
+        {/* First Block */}
         <div
           style={{
             width: "150px",
@@ -63,7 +91,8 @@ function App() {
               padding: "10px",
               fontWeight: "bold",
               border: "1px",
-              boxShadow: "2px 2px 5px #888"
+              boxShadow: "2px 2px 5px #888",
+              cursor: "pointer"
             }}
           >
             UNDO
@@ -77,7 +106,8 @@ function App() {
               padding: "10px",
               fontWeight: "bold",
               border: "1px",
-              boxShadow: "2px 2px 5px #888"
+              boxShadow: "2px 2px 5px #888",
+              cursor: "pointer"
             }}
           >
             NEW GAME
@@ -91,12 +121,14 @@ function App() {
               padding: "10px",
               fontWeight: "bold",
               border: "1px",
-              boxShadow: "2px 2px 5px #888"
+              boxShadow: "2px 2px 5px #888",
+              cursor: "pointer"
             }}
           >
             AUTO SAVE
           </button>
         </div>
+        {/* Second Block */}
         <div
           style={{
             background: "#65B7CD",
@@ -108,6 +140,7 @@ function App() {
             borderRadius: "5px"
           }}
         ></div>
+        {/* Third Block */}
         <div
           style={{
             background: "#96E5F4",
@@ -124,6 +157,7 @@ function App() {
           <h3 style={{ color: "#2582BF" }}>Your Moves</h3>
         </div>
       </div>
+      {/* Bottom block */}
       <div style={{ color: "#72D3F3", display: "inline-block", width: "100%" }}>
         <p
           style={{
@@ -143,7 +177,8 @@ function App() {
             fontWeight: "bold",
             margin: "5px",
             border: "1px",
-            boxShadow: "2px 2px 5px #888"
+            boxShadow: "2px 2px 5px #888",
+            cursor: "pointer"
           }}
         >
           EASY
@@ -157,7 +192,8 @@ function App() {
             fontWeight: "bold",
             margin: "5px",
             border: "1px",
-            boxShadow: "2px 2px 5px #888"
+            boxShadow: "2px 2px 5px #888",
+            cursor: "pointer"
           }}
         >
           MEDIUM
@@ -171,7 +207,8 @@ function App() {
             fontWeight: "bold",
             margin: "5px",
             border: "1px",
-            boxShadow: "2px 2px 5px #888"
+            boxShadow: "2px 2px 5px #888",
+            cursor: "pointer"
           }}
         >
           HARD
@@ -185,7 +222,8 @@ function App() {
             fontWeight: "bold",
             margin: "5px",
             border: "1px",
-            boxShadow: "2px 2px 5px #888"
+            boxShadow: "2px 2px 5px #888",
+            cursor: "pointer"
           }}
         >
           CUSTOM
