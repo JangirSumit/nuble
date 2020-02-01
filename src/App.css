@@ -41,7 +41,7 @@
 .tile {
   width: 70px;
   height: 70px;
-  box-shadow: 5px 5px 5px #888;
+  box-shadow: -5px -5px 5px #888;
   color: #4c4c4c;
   background: #ebebeb;
   padding: 15px;
@@ -52,4 +52,8 @@
   font-weight: bold;
   flex: auto;
   cursor: pointer;
+}
+
+.tile:hover {
+  box-shadow: -6px -6px 5px #888;
 }
