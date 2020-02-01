@@ -1,3 +1,7 @@
+![Image1](https://github.com/JangirSumit/nuble/blob/master/mygame.JPG) 
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
