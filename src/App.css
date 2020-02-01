@@ -37,3 +37,19 @@
     transform: rotate(360deg);
   }
 }
+
+.tile {
+  width: 70px;
+  height: 70px;
+  box-shadow: 5px 5px 5px #888;
+  color: #4c4c4c;
+  background: #ebebeb;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 5px;
+  font-size: 50px;
+  text-align: center;
+  font-weight: bold;
+  flex: auto;
+  cursor: pointer;
+}

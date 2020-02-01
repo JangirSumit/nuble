@@ -134,12 +134,21 @@ function App() {
             background: "#65B7CD",
             width: "500px",
             height: "500px",
-            display: "inline-block",
+            display: "inline-flex",
             verticalAlign: "top",
             marginTop: "100px",
-            borderRadius: "5px"
+            borderRadius: "5px",
+            flexWrap: "wrap"
           }}
-        ></div>
+        >
+          {tiles.map(t => {
+            return (
+              <div className="tile" style={{ background: t ? "" : "#5DA8BD" }}>
+                {t ? t : " "}
+              </div>
+            );
+          })}
+        </div>
         {/* Third Block */}
         <div
           style={{
