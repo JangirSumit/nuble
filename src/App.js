@@ -1,16 +1,26 @@
 import React, { Component } from "react";
 import "./App.css";
 import { shuffle } from "./helper";
+import Tiles from "./components/tiles";
 import move from "./content/move.png";
 import hourglass from "./content/hourglass.png";
 import nuble from "./content/nuble-logo.png";
 
 class App extends Component {
-  render() {
+  constructor() {
+    super();
     let items = [...Array(15).keys()];
     items = shuffle(items);
     let tiles = [...items.map(t => t + 1), null];
 
+    this.state = {
+      gameState: [tiles],
+      history: [],
+      moves: []
+    };
+  }
+
+  render() {
     return (
       <div className="App">
         {/* Top Header */}
@@ -160,17 +170,7 @@ class App extends Component {
               flexWrap: "wrap"
             }}
           >
-            {tiles.map(t => {
-              return (
-                <div
-                  key={t}
-                  className="tile"
-                  style={{ background: t ? "" : "#5DA8BD" }}
-                >
-                  {t ? t : " "}
-                </div>
-              );
-            })}
+            {<Tiles tiles={this.state.gameState[0]} />}
           </div>
         </div>
         {/* Bottom block */}
