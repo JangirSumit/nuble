@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { shuffle } from "./helper";
+import { shuffle, calculate2dPosition } from "./helper";
 import Tiles from "./components/tiles";
 import move from "./content/move.png";
 import hourglass from "./content/hourglass.png";
@@ -20,7 +20,14 @@ class App extends Component {
     };
   }
 
-  handleTileClick(position) {}
+  handleTileClick(position) {
+    let currentPosition = calculate2dPosition(4, position);
+    let currentMoves = this.state.moves;
+    currentMoves = [...currentMoves, currentPosition];
+    this.setState({
+      moves: currentMoves
+    });
+  }
 
   render() {
     return (
@@ -76,7 +83,7 @@ class App extends Component {
               src={move}
               style={{ height: "16px", width: "18px", paddingRight: "5px" }}
             />
-            <span>MOVES</span>
+            <span>MOVES: {this.state.moves.length}</span>
           </div>
           <div
             style={{
@@ -151,10 +158,22 @@ class App extends Component {
             borderRadius: "5px",
             position: "absolute",
             top: "170px",
-            right: "25px"
+            right: "25px",
+            textAlign: "left",
+            paddingLeft: "15px"
           }}
         >
           <h3 style={{ color: "#2582BF" }}>Your Moves</h3>
+          {this.state.moves.map((m, i) => {
+            return (
+              <p style={{ fontSize: "16px", fontWeight: "bold" }}>
+                {i + 1}
+                {"."} [{m[0] + 1}
+                {" , "}
+                {m[1] + 1}]
+              </p>
+            );
+          })}
         </div>
 
         {/* Center block */}

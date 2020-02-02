@@ -49,12 +49,11 @@ function shuffle(array) {
 function calculate2dPosition(matSize, index) {
   let position = [0, 0];
   let count = 0;
-  let j = 0;
   let gotIt = false;
 
   for (let i = 0; i < matSize; i++) {
     for (let j = 0; j < matSize; j++) {
-      if (count == index) {
+      if (count === index) {
         position = [i, j];
         gotIt = true;
         break;
@@ -71,4 +70,4 @@ function calculate2dPosition(matSize, index) {
   return position;
 }
 
-export { listToMatrix, shuffle };
+export { listToMatrix, shuffle, calculate2dPosition, matrixToList };
