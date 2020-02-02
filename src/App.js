@@ -22,11 +22,13 @@ class App extends Component {
 
   handleTileClick(position) {
     let currentPosition = calculate2dPosition(4, position);
-    let currentMoves = this.state.moves;
-    currentMoves = [...currentMoves, currentPosition];
-    this.setState({
-      moves: currentMoves
-    });
+    if (currentPosition[0] !== -1 && currentPosition[1] !== -1) {
+      let currentMoves = this.state.moves;
+      currentMoves = [...currentMoves, currentPosition];
+      this.setState({
+        moves: currentMoves
+      });
+    }
   }
 
   render() {

@@ -47,7 +47,7 @@ function shuffle(array) {
 }
 
 function calculate2dPosition(matSize, index) {
-  let position = [0, 0];
+  let position = [-1, -1];
   let count = 0;
   let gotIt = false;
 
