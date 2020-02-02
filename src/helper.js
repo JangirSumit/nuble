@@ -112,7 +112,7 @@ function checkForMatrixBoundryLimit(position, matSize) {
 function checkGameCompleted(list, matSize) {
   let count = 0;
   for (let index = 0; index < matSize * matSize - 1; index++) {
-    if (list[index] == index + 1) {
+    if (list[index] === index + 1) {
       count++;
     } else {
       break;
