@@ -76,6 +76,30 @@ function millisToMinutesAndSeconds(millis) {
   return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
 }
 
+function changePositionWithBlank(list, position) {
+  let matrix = listToMatrix(list, 4);
+  let [i, j] = position;
+
+  let PossiblePositions = [
+    [i - 1, j],
+    [i, j - 1],
+    [i + 1, j],
+    [i, j + 1]
+  ];
+
+  for (let index = 0; index < PossiblePositions.length; index++) {
+    let [a, b] = PossiblePositions[index];
+    if (!matrix[a][b].trim()) {
+      // Blank is in range of clicked element
+      let temp = matrix[i][j];
+      matrix[i][j] = matrix[a][b];
+      matrix[a][b] = temp;
+      break;
+    }
+  }
+  return matrixToList(matrixToList);
+}
+
 export {
   listToMatrix,
   shuffle,

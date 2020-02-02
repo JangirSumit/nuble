@@ -134,7 +134,7 @@ class App extends Component {
               src={hourglass}
               style={{ height: "16px", width: "18px", paddingRight: "5px" }}
             />
-            TIME : {millisToMinutesAndSeconds(this.state.time)}
+            TIME: {millisToMinutesAndSeconds(this.state.time)}
           </div>
           <br></br>
           <button
