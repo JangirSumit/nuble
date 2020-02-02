@@ -3,7 +3,8 @@ import "./App.css";
 import {
   shuffle,
   calculate2dPosition,
-  millisToMinutesAndSeconds
+  millisToMinutesAndSeconds,
+  changePositionWithBlank
 } from "./helper";
 import Tiles from "./components/tiles";
 import move from "./content/move.png";
@@ -30,10 +31,21 @@ class App extends Component {
   handleTileClick(position) {
     let currentPosition = calculate2dPosition(4, position);
     if (currentPosition[0] !== -1 && currentPosition[1] !== -1) {
+      let currentGameState = this.state.gameState[
+        this.state.gameState.length - 1
+      ];
+      let newGameState = changePositionWithBlank(
+        currentGameState,
+        currentPosition
+      );
+
       let currentMoves = this.state.moves;
+      let gameStates = this.state.gameState;
+      let newStates = [...gameStates, newGameState];
       currentMoves = [...currentMoves, currentPosition];
       this.setState({
-        moves: currentMoves
+        moves: currentMoves,
+        gameState: newStates
       });
 
       if (!this.state.isOn) {
@@ -228,7 +240,7 @@ class App extends Component {
           >
             {
               <Tiles
-                tiles={this.state.gameState[0]}
+                tiles={this.state.gameState[this.state.gameState.length - 1]}
                 handleTileClick={this.handleTileClick.bind(this)}
               />
             }

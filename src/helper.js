@@ -89,7 +89,7 @@ function changePositionWithBlank(list, position) {
 
   for (let index = 0; index < PossiblePositions.length; index++) {
     let [a, b] = PossiblePositions[index];
-    if (!matrix[a][b].trim()) {
+    if (checkForMatrixBoundryLimit([a, b], 4) && !matrix[a][b]) {
       // Blank is in range of clicked element
       let temp = matrix[i][j];
       matrix[i][j] = matrix[a][b];
@@ -97,7 +97,16 @@ function changePositionWithBlank(list, position) {
       break;
     }
   }
-  return matrixToList(matrixToList);
+  return matrixToList(matrix);
+}
+
+function checkForMatrixBoundryLimit(position, matSize) {
+  return (
+    position[0] > -1 &&
+    position[0] < matSize &&
+    position[1] > -1 &&
+    position[1] < matSize
+  );
 }
 
 export {
@@ -105,5 +114,6 @@ export {
   shuffle,
   calculate2dPosition,
   matrixToList,
-  millisToMinutesAndSeconds
+  millisToMinutesAndSeconds,
+  changePositionWithBlank
 };
