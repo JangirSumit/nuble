@@ -29,6 +29,11 @@ class App extends Component {
     };
   }
 
+  handleNewGame() {
+    alert("Game will be lost after this.");
+    window.location.reload();
+  }
+
   handleUndo() {
     if (this.state.moves && this.state.moves.length) {
       let gameStates = this.state.gameState;
@@ -194,6 +199,7 @@ class App extends Component {
             UNDO
           </button>
           <button
+            onClick={this.handleNewGame.bind(this)}
             style={{
               background: "#8CC63E",
               width: "150px",
