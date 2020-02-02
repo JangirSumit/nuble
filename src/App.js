@@ -153,7 +153,7 @@ class App extends Component {
           style={{
             background: "#96E5F4",
             height: "650px",
-            width: "400px",
+            width: "200px",
             verticalAlign: "top",
             borderRadius: "5px",
             position: "absolute",
