@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
-import { shuffle, calculate2dPosition } from "./helper";
+import {
+  shuffle,
+  calculate2dPosition,
+  millisToMinutesAndSeconds
+} from "./helper";
 import Tiles from "./components/tiles";
 import move from "./content/move.png";
 import hourglass from "./content/hourglass.png";
@@ -16,7 +20,10 @@ class App extends Component {
     this.state = {
       gameState: [tiles],
       history: [],
-      moves: []
+      moves: [],
+      time: 0,
+      start: 0,
+      isOn: false
     };
   }
 
@@ -28,7 +35,33 @@ class App extends Component {
       this.setState({
         moves: currentMoves
       });
+
+      if (!this.state.isOn) {
+        this.startTimer();
+      }
     }
+  }
+
+  startTimer() {
+    this.setState({
+      time: this.state.time,
+      start: Date.now() - this.state.time,
+      isOn: true
+    });
+    this.timer = setInterval(
+      () =>
+        this.setState({
+          time: Date.now() - this.state.start
+        }),
+      1
+    );
+  }
+  stopTimer() {
+    this.setState({ isOn: false });
+    clearInterval(this.timer);
+  }
+  resetTimer() {
+    this.setState({ time: 0 });
   }
 
   render() {
@@ -101,7 +134,7 @@ class App extends Component {
               src={hourglass}
               style={{ height: "16px", width: "18px", paddingRight: "5px" }}
             />
-            TIME
+            TIME : {millisToMinutesAndSeconds(this.state.time)}
           </div>
           <br></br>
           <button
@@ -168,7 +201,7 @@ class App extends Component {
           <h3 style={{ color: "#2582BF" }}>Your Moves</h3>
           {this.state.moves.map((m, i) => {
             return (
-              <p style={{ fontSize: "16px", fontWeight: "bold" }}>
+              <p key={i} style={{ fontSize: "16px", fontWeight: "bold" }}>
                 {i + 1}
                 {"."} [{m[0] + 1}
                 {" , "}
