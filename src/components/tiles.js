@@ -3,7 +3,10 @@ import Tile from "./tile";
 
 class Tiles extends Component {
   handleTileClick(val) {
-    this.props.handleTileClick(this.props.tiles.indexOf(parseInt(val)));
+    this.props.handleTileClick(
+      this.props.tiles.indexOf(parseInt(val)),
+      parseInt(val)
+    );
   }
   render() {
     return (

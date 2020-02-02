@@ -4,7 +4,8 @@ import {
   shuffle,
   calculate2dPosition,
   millisToMinutesAndSeconds,
-  changePositionWithBlank
+  changePositionWithBlank,
+  checkGameCompleted
 } from "./helper";
 import Tiles from "./components/tiles";
 import move from "./content/move.png";
@@ -28,7 +29,7 @@ class App extends Component {
     };
   }
 
-  handleTileClick(position) {
+  handleTileClick(position, val) {
     let currentPosition = calculate2dPosition(4, position);
     if (currentPosition[0] !== -1 && currentPosition[1] !== -1) {
       let currentGameState = this.state.gameState[
@@ -42,7 +43,15 @@ class App extends Component {
       let currentMoves = this.state.moves;
       let gameStates = this.state.gameState;
       let newStates = [...gameStates, newGameState];
-      currentMoves = [...currentMoves, currentPosition];
+      currentMoves = [
+        ...currentMoves,
+        {
+          from: currentPosition,
+          to: calculate2dPosition(4, newGameState.indexOf(val)),
+          val: val
+        }
+      ];
+
       this.setState({
         moves: currentMoves,
         gameState: newStates
@@ -50,6 +59,10 @@ class App extends Component {
 
       if (!this.state.isOn) {
         this.startTimer();
+      }
+
+      if (checkGameCompleted(newGameState)) {
+        alert("Game Over!!!!!");
       }
     }
   }
@@ -200,14 +213,16 @@ class App extends Component {
           style={{
             background: "#96E5F4",
             height: "650px",
-            width: "200px",
+            width: "250px",
             verticalAlign: "top",
             borderRadius: "5px",
             position: "absolute",
             top: "170px",
             right: "25px",
             textAlign: "left",
-            paddingLeft: "15px"
+            paddingLeft: "15px",
+            overflowY: "auto",
+            paddingBottom: "5px"
           }}
         >
           <h3 style={{ color: "#2582BF" }}>Your Moves</h3>
@@ -215,9 +230,11 @@ class App extends Component {
             return (
               <p key={i} style={{ fontSize: "16px", fontWeight: "bold" }}>
                 {i + 1}
-                {"."} [{m[0] + 1}
+                {"."} ({m.val}){":"} [{m.from[0] + 1}
                 {" , "}
-                {m[1] + 1}]
+                {m.from[1] + 1}]{"->"} [{m.to[0] + 1}
+                {" , "}
+                {m.to[1] + 1}]
               </p>
             );
           })}
