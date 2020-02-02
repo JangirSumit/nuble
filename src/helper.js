@@ -15,6 +15,18 @@ function listToMatrix(list, elementsPerSubArray) {
   return matrix;
 }
 
+function matrixToList(matrix) {
+  var list = [];
+  let i = 0;
+
+  while (matrix[i]) {
+    list.push(...matrix[i]);
+    i++;
+  }
+
+  return list;
+}
+
 function shuffle(array) {
   var currentIndex = array.length,
     temporaryValue,
