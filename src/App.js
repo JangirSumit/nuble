@@ -29,6 +29,21 @@ class App extends Component {
     };
   }
 
+  handleUndo() {
+    if (this.state.moves && this.state.moves.length) {
+      let gameStates = this.state.gameState;
+      gameStates.pop();
+
+      let moves = this.state.moves;
+      moves.pop();
+
+      this.setState({
+        gameState: gameStates,
+        moves: moves
+      });
+    }
+  }
+
   handleTileClick(position, val) {
     let currentPosition = calculate2dPosition(4, position);
     if (currentPosition[0] !== -1 && currentPosition[1] !== -1) {
@@ -163,6 +178,7 @@ class App extends Component {
           </div>
           <br></br>
           <button
+            onClick={this.handleUndo.bind(this)}
             style={{
               background: "#F7941D",
               width: "150px",
