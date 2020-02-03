@@ -182,49 +182,25 @@ class App extends Component {
             TIME: {millisToMinutesAndSeconds(this.state.time)}
           </div>
           <br></br>
-          <button
+          <button className="left-side-box-buttons"
             onClick={this.handleUndo.bind(this)}
             style={{
-              background: "#F7941D",
-              width: "150px",
-              color: "#fff",
-              marginTop: "15px",
-              padding: "10px",
-              fontWeight: "bold",
-              border: "1px",
-              boxShadow: "2px 2px 5px #888",
-              cursor: "pointer"
+              background: "#F7941D"
             }}
           >
             UNDO
           </button>
-          <button
+          <button className="left-side-box-buttons"
             onClick={this.handleNewGame.bind(this)}
             style={{
-              background: "#8CC63E",
-              width: "150px",
-              color: "#fff",
-              marginTop: "15px",
-              padding: "10px",
-              fontWeight: "bold",
-              border: "1px",
-              boxShadow: "2px 2px 5px #888",
-              cursor: "pointer"
+              background: "#8CC63E"
             }}
           >
             NEW GAME
           </button>
-          <button
+          <button className="left-side-box-buttons"
             style={{
-              background: "#CF145B",
-              width: "150px",
-              color: "#fff",
-              marginTop: "15px",
-              padding: "10px",
-              fontWeight: "bold",
-              border: "1px",
-              boxShadow: "2px 2px 5px #888",
-              cursor: "pointer"
+              background: "#CF145B"
             }}
           >
             AUTO SAVE
@@ -232,20 +208,7 @@ class App extends Component {
         </div>
         {/* Third Block */}
         <div
-          style={{
-            background: "#96E5F4",
-            height: "650px",
-            width: "250px",
-            verticalAlign: "top",
-            borderRadius: "5px",
-            position: "absolute",
-            top: "170px",
-            right: "25px",
-            textAlign: "left",
-            paddingLeft: "15px",
-            overflowY: "auto",
-            paddingBottom: "5px"
-          }}
+          className="right-side-box"
         >
           <h3 style={{ color: "#2582BF" }}>Your Moves</h3>
           {this.state.moves.map((m, i) => {
@@ -266,16 +229,7 @@ class App extends Component {
         <div align="center">
           {/* Second Block */}
           <div
-            style={{
-              background: "#65B7CD",
-              width: "500px",
-              height: "500px",
-              display: "inline-flex",
-              verticalAlign: "top",
-              marginTop: "100px",
-              borderRadius: "5px",
-              flexWrap: "wrap"
-            }}
+            className="center"
           >
             {
               <Tiles
@@ -287,12 +241,7 @@ class App extends Component {
         </div>
         {/* Bottom block */}
         <div
-          style={{
-            color: "#72D3F3",
-            position: "absolute",
-            bottom: "50px",
-            width: "100%"
-          }}
+          className="footer"
         >
           <p
             style={{
@@ -303,66 +252,10 @@ class App extends Component {
           >
             Difficulty level
           </p>
-          <button
-            style={{
-              background: "#2584B2",
-              padding: "10px",
-              width: "200px",
-              color: "#72D3F3",
-              fontWeight: "bold",
-              margin: "5px",
-              border: "1px",
-              boxShadow: "2px 2px 5px #888",
-              cursor: "pointer"
-            }}
-          >
-            EASY
-          </button>
-          <button
-            style={{
-              background: "#2584B2",
-              padding: "10px",
-              width: "200px",
-              color: "#72D3F3",
-              fontWeight: "bold",
-              margin: "5px",
-              border: "1px",
-              boxShadow: "2px 2px 5px #888",
-              cursor: "pointer"
-            }}
-          >
-            MEDIUM
-          </button>
-          <button
-            style={{
-              background: "#2584B2",
-              padding: "10px",
-              width: "200px",
-              color: "#72D3F3",
-              fontWeight: "bold",
-              margin: "5px",
-              border: "1px",
-              boxShadow: "2px 2px 5px #888",
-              cursor: "pointer"
-            }}
-          >
-            HARD
-          </button>
-          <button
-            style={{
-              background: "#2584B2",
-              padding: "10px",
-              width: "200px",
-              color: "#72D3F3",
-              fontWeight: "bold",
-              margin: "5px",
-              border: "1px",
-              boxShadow: "2px 2px 5px #888",
-              cursor: "pointer"
-            }}
-          >
-            CUSTOM
-          </button>
+          <button className="footer-buttons"> EASY </button>
+          <button className="footer-buttons"> MEDIUM </button>
+          <button className="footer-buttons"> HARD </button>
+          <button className="footer-buttons"> CUSTOM </button>
         </div>
       </div>
     );

@@ -1,14 +1,17 @@
+/* Page: */
+/* =============================== */
+
 .App {
   text-align: center;
   width: 100%;
 }
 
 .App-logo {
-  width: "64px";
-  height: "64px";
-  padding-top: "10px";
-  vertical-align: "middle";
-  padding-right: "10px";
+  width: 64px;
+  height: 64px;
+  padding-top: 10px;
+  vertical-align: middle;
+  padding-right: 10px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -59,4 +62,68 @@
 
 .tile:hover {
   box-shadow: -6px -6px 5px #888;
+}
+
+/********************************Left Side(Timer)*************************/
+.left-side-box-buttons{
+  width: 150px;
+  color: #fff;
+  margin-top: 15px;
+  padding: 10px;
+  font-weight: bold;
+  border: 1px;
+  box-shadow: 2px 2px 5px #888;
+  cursor: pointer;
+}
+
+
+/***************************** Right-Side(Moves)**************************/
+.right-side-box{
+  background: #96E5F4;
+  height: 650px;
+  width: 250px;
+  vertical-align: top;
+  border-radius: 5px;
+  position: absolute;
+  top: 170px;
+  right: 25px;
+  text-align: left;
+  padding-left: 15px;
+  overflow-y: auto;
+  padding-bottom: 5px;
+}
+
+/*************************** Center ********************************/
+.center{
+  background: #65B7CD;
+  width: 500px;
+  height: 500px;
+  display: inline-flex;
+  vertical-align: top;
+  margin-top: 100px;
+  border-radius: 5px;
+  flex-wrap: wrap;
+}
+
+
+/*************************** FOOTER *******************************/
+
+.footer-buttons{
+  background: #2584B2;
+  padding: 10px;
+  width: 200px;
+  color: #72D3F3;
+  font-weight: bold;
+  margin: 5px;
+  border: 1px;
+  box-shadow: 2px 2px 5px #888;
+  cursor: pointer;
+  outline: none;
+}
+
+.footer{
+  color: #72D3F3;
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
 }
