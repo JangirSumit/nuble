@@ -160,7 +160,12 @@
   }
 
   .right-side-box{
-    display: none;;
+    display: none;
+    top:80px;
+    z-index: 10000;
+    height: 80% !important;
+    right: 0px;
+
   }
   
   .left-side-box{
@@ -181,5 +186,10 @@
 
   .center{
     margin-top: 10px;
+  }
+
+  .mobile-menu{
+    display: block !important; 
+    cursor: pointer;
   }
 }

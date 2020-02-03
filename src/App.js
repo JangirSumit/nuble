@@ -11,6 +11,7 @@ import Tiles from "./components/tiles";
 import move from "./content/move.png";
 import hourglass from "./content/hourglass.png";
 import nuble from "./content/nuble-logo.png";
+import menuIcon from "./content/menu.png";
 
 class App extends Component {
   constructor() {
@@ -87,6 +88,11 @@ class App extends Component {
     }
   }
 
+  showRightBox(){
+    let rightBox = document.getElementsByClassName("right-side-box")[0];
+    rightBox.style.display = rightBox.style.display === "none"?"block":"none";
+  }
+
   startTimer() {
     this.setState({
       time: this.state.time,
@@ -137,6 +143,21 @@ class App extends Component {
             }}
           ></img>
           <span style={{ verticalAlign: "middle" }}>NUBLE</span>
+          <img
+            alt="nuble"
+            src={menuIcon}
+            className="mobile-menu"
+            onClick={this.showRightBox.bind(this)}
+            style={{
+              width: "45px",
+              height: "40px",
+              marginTop: "20px",
+              verticalAlign: "middle",
+              marginRight: "10px",
+              float:"right",
+              display:"none"
+            }}
+          ></img>
         </div>
         {/* First Block */}
         <div
@@ -184,9 +205,7 @@ class App extends Component {
           </button>
         </div>
         {/* Third Block */}
-        <div
-          className="right-side-box"
-        >
+        <div className="right-side-box">
           <h3 style={{ color: "#2582BF" }}>Your Moves</h3>
           {this.state.moves.map((m, i) => {
             return (
