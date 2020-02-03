@@ -26,7 +26,8 @@ class App extends Component {
       moves: [],
       time: 0,
       start: 0,
-      isOn: false
+      isOn: false,
+      showRightSideBox: true
     };
   }
 
@@ -88,9 +89,16 @@ class App extends Component {
     }
   }
 
-  showRightBox(){
-    let rightBox = document.getElementsByClassName("right-side-box")[0];
-    rightBox.style.display = rightBox.style.display === "none"?"block":"none";
+  showRightBox() {
+    if (this.state.showRightSideBox) {
+      this.setState({
+        showRightSideBox: false
+      });
+    } else {
+      this.setState({
+        showRightSideBox: true
+      });
+    }
   }
 
   startTimer() {
@@ -154,16 +162,14 @@ class App extends Component {
               marginTop: "20px",
               verticalAlign: "middle",
               marginRight: "10px",
-              float:"right",
-              display:"none"
+              float: "right",
+              display: "none"
             }}
           ></img>
         </div>
         {/* First Block */}
-        <div
-          className="left-side-box"
-        >
-          <div className="timer-moves" >
+        <div className="left-side-box">
+          <div className="timer-moves">
             <img
               alt="move"
               src={move}
@@ -180,7 +186,8 @@ class App extends Component {
             TIME: {millisToMinutesAndSeconds(this.state.time)}
           </div>
           <br></br>
-          <button className="left-side-box-buttons"
+          <button
+            className="left-side-box-buttons"
             onClick={this.handleUndo.bind(this)}
             style={{
               background: "#F7941D"
@@ -188,7 +195,8 @@ class App extends Component {
           >
             UNDO
           </button>
-          <button className="left-side-box-buttons"
+          <button
+            className="left-side-box-buttons"
             onClick={this.handleNewGame.bind(this)}
             style={{
               background: "#8CC63E"
@@ -196,7 +204,8 @@ class App extends Component {
           >
             NEW GAME
           </button>
-          <button className="left-side-box-buttons"
+          <button
+            className="left-side-box-buttons"
             style={{
               background: "#CF145B"
             }}
@@ -205,28 +214,30 @@ class App extends Component {
           </button>
         </div>
         {/* Third Block */}
-        <div className="right-side-box">
-          <h3 style={{ color: "#2582BF" }}>Your Moves</h3>
-          {this.state.moves.map((m, i) => {
-            return (
-              <p key={i} style={{ fontSize: "16px", fontWeight: "bold" }}>
-                {i + 1}
-                {"."} ({m.val}){":"} [{m.from[0] + 1}
-                {" , "}
-                {m.from[1] + 1}]{"->"} [{m.to[0] + 1}
-                {" , "}
-                {m.to[1] + 1}]
-              </p>
-            );
-          })}
-        </div>
+        {this.state.showRightSideBox ? (
+          <div className="right-side-box">
+            <h3 style={{ color: "#2582BF" }}>Your Moves</h3>
+            {this.state.moves.map((m, i) => {
+              return (
+                <p key={i} style={{ fontSize: "16px", fontWeight: "bold" }}>
+                  {i + 1}
+                  {"."} ({m.val}){":"} [{m.from[0] + 1}
+                  {" , "}
+                  {m.from[1] + 1}]{"->"} [{m.to[0] + 1}
+                  {" , "}
+                  {m.to[1] + 1}]
+                </p>
+              );
+            })}
+          </div>
+        ) : (
+          ""
+        )}
 
         {/* Center block */}
         <div align="center">
           {/* Second Block */}
-          <div
-            className="center"
-          >
+          <div className="center">
             {
               <Tiles
                 tiles={this.state.gameState[this.state.gameState.length - 1]}

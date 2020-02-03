@@ -65,16 +65,16 @@
 }
 
 /********************************Left Side(Timer)*************************/
-.left-side-box{
+.left-side-box {
   width: 150px;
   height: 300px;
   float: left;
   position: absolute;
   left: 25px;
-  top: 170px
+  top: 170px;
 }
 
-.left-side-box-buttons{
+.left-side-box-buttons {
   width: 150px;
   color: #fff;
   margin-top: 15px;
@@ -85,18 +85,17 @@
   cursor: pointer;
 }
 
-.timer-moves{
-  color: #2582BF;
+.timer-moves {
+  color: #2582bf;
   padding: 5px 10px;
   font-weight: bold;
   font-size: 18px;
   text-align: left;
 }
 
-
 /***************************** Right-Side(Moves)**************************/
-.right-side-box{
-  background: #96E5F4;
+.right-side-box {
+  background: #96e5f4;
   height: 650px;
   width: 250px;
   vertical-align: top;
@@ -111,8 +110,8 @@
 }
 
 /*************************** Center ********************************/
-.center{
-  background: #65B7CD;
+.center {
+  background: #65b7cd;
   width: 500px;
   height: 500px;
   display: inline-flex;
@@ -122,14 +121,13 @@
   flex-wrap: wrap;
 }
 
-
 /*************************** FOOTER *******************************/
 
-.footer-buttons{
-  background: #2584B2;
+.footer-buttons {
+  background: #2584b2;
   padding: 10px;
   width: 200px;
-  color: #72D3F3;
+  color: #72d3f3;
   font-weight: bold;
   margin: 5px;
   border: 1px;
@@ -138,58 +136,78 @@
   outline: none;
 }
 
-.footer{
-  color: #72D3F3;
+.footer {
+  color: #72d3f3;
   position: absolute;
   bottom: 50px;
   width: 100%;
 }
 
-
 /******************************** Mobile **************************/
-@media only screen and (max-width: 900px) {
-  .footer{
+@media only screen and (max-width: 1098px) {
+  .footer {
     display: inline-block;
     width: 100%;
     position: inherit;
     margin-top: 10px;
   }
 
-  .footer-buttons{
+  .footer-buttons {
     width: 120px;
   }
 
-  .right-side-box{
-    display: none;
-    top:80px;
+  .right-side-box {
+    top: 80px;
     z-index: 10000;
     height: 80% !important;
     right: 0px;
-
+    display: none;
   }
-  
-  .left-side-box{
+
+  .left-side-box {
     width: 100%;
     position: inherit;
     margin-top: 10px;
     height: auto;
   }
 
-  .left-side-box-buttons{
+  .left-side-box-buttons {
     width: 100px;
     margin: 5px;
   }
-  .timer-moves{
+  .timer-moves {
     width: 120px;
     display: inline-block;
   }
 
-  .center{
+  .center {
     margin-top: 10px;
   }
 
-  .mobile-menu{
-    display: block !important; 
+  .mobile-menu {
+    display: block !important;
     cursor: pointer;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .center {
+    margin-top: 10px;
+    width: 100%;
+    height: 100vw;
+  }
+
+  .tile {
+    font-size: 10vw;
+    width: 11vw;
+    height: 11vw;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .tile {
+    font-size: 7vw;
+    width: 8vw;
+    height: 8vw;
   }
 }
