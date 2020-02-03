@@ -147,7 +147,7 @@
 
 
 /******************************** Mobile **************************/
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 900px) {
   .footer{
     display: inline-block;
     width: 100%;
