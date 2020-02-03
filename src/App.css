@@ -65,6 +65,15 @@
 }
 
 /********************************Left Side(Timer)*************************/
+.left-side-box{
+  width: 150px;
+  height: 300px;
+  float: left;
+  position: absolute;
+  left: 25px;
+  top: 170px
+}
+
 .left-side-box-buttons{
   width: 150px;
   color: #fff;
@@ -74,6 +83,14 @@
   border: 1px;
   box-shadow: 2px 2px 5px #888;
   cursor: pointer;
+}
+
+.timer-moves{
+  color: #2582BF;
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: left;
 }
 
 
@@ -126,4 +143,39 @@
   position: absolute;
   bottom: 50px;
   width: 100%;
+}
+
+
+/******************************** Mobile **************************/
+@media only screen and (max-width: 600px) {
+  .footer{
+    display: inline-block;
+    width: 100%;
+    position: inherit;
+    padding-top: 20px;
+  }
+
+  .footer-buttons{
+    width: 120px;
+  }
+
+  .right-side-box{
+    display: none;;
+  }
+  
+  .left-side-box{
+    width: 100%;
+    position: inherit;
+    padding-top: 20px;
+    height: auto;
+  }
+
+  .left-side-box-buttons{
+    width: 100px;
+    margin: 5px;
+  }
+  .timer-moves{
+    width: 120px;
+    display: inline-block;
+  }
 }

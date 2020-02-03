@@ -140,24 +140,9 @@ class App extends Component {
         </div>
         {/* First Block */}
         <div
-          style={{
-            width: "150px",
-            height: "300px",
-            float: "left",
-            position: "absolute",
-            left: "25px",
-            top: "170px"
-          }}
+          className="left-side-box"
         >
-          <div
-            style={{
-              color: "#2582BF",
-              padding: "5px 10px",
-              fontWeight: "bold",
-              fontSize: "18px",
-              textAlign: "left"
-            }}
-          >
+          <div className="timer-moves" >
             <img
               alt="move"
               src={move}
@@ -165,15 +150,7 @@ class App extends Component {
             />
             <span>MOVES: {this.state.moves.length}</span>
           </div>
-          <div
-            style={{
-              color: "#2582BF",
-              padding: "5px 10px",
-              fontWeight: "bold",
-              fontSize: "18px",
-              textAlign: "left"
-            }}
-          >
+          <div className="timer-moves">
             <img
               alt="move"
               src={hourglass}
@@ -240,9 +217,7 @@ class App extends Component {
           </div>
         </div>
         {/* Bottom block */}
-        <div
-          className="footer"
-        >
+        <div className="footer" align="center">
           <p
             style={{
               color: "#2584B2",
