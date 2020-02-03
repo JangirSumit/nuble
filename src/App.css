@@ -147,12 +147,12 @@
 
 
 /******************************** Mobile **************************/
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
   .footer{
     display: inline-block;
     width: 100%;
     position: inherit;
-    padding-top: 20px;
+    margin-top: 10px;
   }
 
   .footer-buttons{
@@ -166,7 +166,7 @@
   .left-side-box{
     width: 100%;
     position: inherit;
-    padding-top: 20px;
+    margin-top: 10px;
     height: auto;
   }
 
@@ -177,5 +177,9 @@
   .timer-moves{
     width: 120px;
     display: inline-block;
+  }
+
+  .center{
+    margin-top: 10px;
   }
 }
