@@ -1,3 +1,5 @@
+[Play Here](https://jangirsumit.github.io/nuble/)
+
 ![Image1](https://github.com/JangirSumit/nuble/blob/master/mygame.JPG) 
 
 
