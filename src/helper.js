@@ -76,8 +76,8 @@ function millisToMinutesAndSeconds(millis) {
   return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
 }
 
-function changePositionWithBlank(list, position) {
-  let matrix = listToMatrix(list, 4);
+function changePositionWithBlank(list, position, matSize) {
+  let matrix = listToMatrix(list, matSize);
   let [i, j] = position;
 
   let PossiblePositions = [
@@ -89,7 +89,7 @@ function changePositionWithBlank(list, position) {
 
   for (let index = 0; index < PossiblePositions.length; index++) {
     let [a, b] = PossiblePositions[index];
-    if (checkForMatrixBoundryLimit([a, b], 4) && !matrix[a][b]) {
+    if (checkForMatrixBoundryLimit([a, b], matSize) && !matrix[a][b]) {
       // Blank is in range of clicked element
       let temp = matrix[i][j];
       matrix[i][j] = matrix[a][b];

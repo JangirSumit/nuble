@@ -9,7 +9,7 @@ class Tile extends Component {
     let t = this.props.t;
     return (
       <div
-        className="tile"
+        className={"tile-" + this.props.gameTiles}
         style={{ background: t ? "" : "#5DA8BD" }}
         onClick={this.handleClick.bind(this)}
       >

@@ -17,6 +17,7 @@ class Tiles extends Component {
               t={t}
               key={t}
               handleTileClick={this.handleTileClick.bind(this)}
+              gameTiles={this.props.gameTiles}
             />
           );
         })}

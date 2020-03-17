@@ -27,7 +27,8 @@ class App extends Component {
       time: 0,
       start: 0,
       isOn: false,
-      showRightSideBox: true
+      showRightSideBox: true,
+      gameTiles: 4
     };
   }
 
@@ -52,14 +53,15 @@ class App extends Component {
   }
 
   handleTileClick(position, val) {
-    let currentPosition = calculate2dPosition(4, position);
+    let currentPosition = calculate2dPosition(this.state.gameTiles, position);
     if (currentPosition[0] !== -1 && currentPosition[1] !== -1) {
       let currentGameState = this.state.gameState[
         this.state.gameState.length - 1
       ];
       let newGameState = changePositionWithBlank(
         currentGameState,
-        currentPosition
+        currentPosition,
+        this.state.gameTiles
       );
 
       let currentMoves = this.state.moves;
@@ -121,6 +123,48 @@ class App extends Component {
   }
   resetTimer() {
     this.setState({ time: 0 });
+  }
+
+  onFooterButtonClick(button) {
+    let gameTiles = 4;
+    let items = [];
+    let tiles = [];
+
+    switch (button) {
+      case "EASY":
+        items = [...Array(8).keys()];
+        items = shuffle(items);
+        tiles = [...items.map(t => t + 1), null];
+        gameTiles = 3;
+        break;
+      case "MEDIUM":
+        items = [...Array(15).keys()];
+        items = shuffle(items);
+        tiles = [...items.map(t => t + 1), null];
+        gameTiles = 4;
+        break;
+      case "HARD":
+        items = [...Array(24).keys()];
+        items = shuffle(items);
+        tiles = [...items.map(t => t + 1), null];
+        gameTiles = 5;
+        break;
+      default:
+        items = [...Array(15).keys()];
+        items = shuffle(items);
+        tiles = [...items.map(t => t + 1), null];
+        gameTiles = 4;
+    }
+    this.stopTimer();
+    this.setState({
+      gameTiles: gameTiles,
+      gameState: [tiles],
+      history: [],
+      moves: [],
+      time: 0,
+      start: 0,
+      isOn: false
+    });
   }
 
   render() {
@@ -242,6 +286,7 @@ class App extends Component {
               <Tiles
                 tiles={this.state.gameState[this.state.gameState.length - 1]}
                 handleTileClick={this.handleTileClick.bind(this)}
+                gameTiles={this.state.gameTiles}
               />
             }
           </div>
@@ -257,10 +302,27 @@ class App extends Component {
           >
             Difficulty level
           </p>
-          <button className="footer-buttons"> EASY </button>
-          <button className="footer-buttons"> MEDIUM </button>
-          <button className="footer-buttons"> HARD </button>
-          <button className="footer-buttons"> CUSTOM </button>
+          <button
+            className="footer-buttons"
+            onClick={event => this.onFooterButtonClick("EASY")}
+          >
+            {" "}
+            EASY{" "}
+          </button>
+          <button
+            className="footer-buttons"
+            onClick={event => this.onFooterButtonClick("MEDIUM")}
+          >
+            {" "}
+            MEDIUM{" "}
+          </button>
+          <button
+            className="footer-buttons"
+            onClick={event => this.onFooterButtonClick("HARD")}
+          >
+            {" "}
+            HARD{" "}
+          </button>
         </div>
       </div>
     );

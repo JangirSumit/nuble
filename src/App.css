@@ -44,7 +44,7 @@
   }
 }
 
-.tile {
+.tile-4 {
   width: 70px;
   height: 70px;
   box-shadow: -5px -5px 5px #888;
@@ -60,7 +60,41 @@
   cursor: pointer;
 }
 
-.tile:hover {
+.tile-5 {
+  width: 50px;
+  height: 50px;
+  box-shadow: -5px -5px 5px #888;
+  color: #4c4c4c;
+  background: #ebebeb;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  flex: auto;
+  cursor: pointer;
+}
+
+.tile-3 {
+  width: 85px;
+  height: 95px;
+  box-shadow: -5px -5px 5px #888;
+  color: #4c4c4c;
+  background: #ebebeb;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 5px;
+  font-size: 60px;
+  text-align: center;
+  font-weight: 700;
+  flex: auto;
+  cursor: pointer;
+}
+
+.tile-4:hover,
+.tile-5:hover,
+.tile-3:hover {
   box-shadow: -6px -6px 5px #888;
 }
 
@@ -89,7 +123,7 @@
   color: #2582bf;
   padding: 5px 10px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 17px;
   text-align: left;
 }
 
@@ -141,6 +175,7 @@
   position: absolute;
   bottom: 50px;
   width: 100%;
+  margin-bottom: 50px;
 }
 
 /******************************** Mobile **************************/
@@ -197,17 +232,41 @@
     height: 100vw;
   }
 
-  .tile {
+  .tile-4 {
     font-size: 10vw;
     width: 11vw;
     height: 11vw;
   }
+
+  .tile-5 {
+    font-size: 6vw;
+    width: 9vw;
+    height: 8vw;
+  }
+
+  .tile-3 {
+    font-size: 10vw;
+    width: 17vw;
+    height: 17vw;
+  }
 }
 
 @media only screen and (max-width: 360px) {
-  .tile {
+  .tile-4 {
     font-size: 7vw;
     width: 8vw;
     height: 8vw;
+  }
+
+  .tile-5 {
+    font-size: 6vw;
+    width: 7vw;
+    height: 7vw;
+  }
+
+  .tile-3 {
+    font-size: 11vw;
+    width: 12vw;
+    height: 15vw;
   }
 }
