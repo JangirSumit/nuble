@@ -16,20 +16,26 @@ import menuIcon from "./content/menu.png";
 class App extends Component {
   constructor() {
     super();
-    let items = [...Array(15).keys()];
-    items = shuffle(items);
-    let tiles = [...items.map(t => t + 1), null];
-
+    let gameTiles = window.localStorage.getItem("gameTiles") || 4;
     this.state = {
-      gameState: [tiles],
+      gameState: [this.getTiles(gameTiles)],
       history: [],
       moves: [],
       time: 0,
       start: 0,
       isOn: false,
       showRightSideBox: true,
-      gameTiles: 4
+      gameTiles: gameTiles
     };
+  }
+
+  getTiles(gameTiles) {
+    let items = [
+      ...Array(parseInt(gameTiles) * parseInt(gameTiles) - 1).keys()
+    ];
+    items = shuffle(items);
+    let tiles = [...items.map(t => t + 1), null];
+    return tiles;
   }
 
   handleNewGame() {
@@ -132,39 +138,33 @@ class App extends Component {
 
     switch (button) {
       case "EASY":
-        items = [...Array(8).keys()];
-        items = shuffle(items);
-        tiles = [...items.map(t => t + 1), null];
         gameTiles = 3;
         break;
       case "MEDIUM":
-        items = [...Array(15).keys()];
-        items = shuffle(items);
-        tiles = [...items.map(t => t + 1), null];
         gameTiles = 4;
         break;
       case "HARD":
-        items = [...Array(24).keys()];
-        items = shuffle(items);
-        tiles = [...items.map(t => t + 1), null];
         gameTiles = 5;
         break;
       default:
-        items = [...Array(15).keys()];
-        items = shuffle(items);
-        tiles = [...items.map(t => t + 1), null];
         gameTiles = 4;
     }
     this.stopTimer();
     this.setState({
       gameTiles: gameTiles,
-      gameState: [tiles],
+      gameState: [this.getTiles(gameTiles)],
       history: [],
       moves: [],
       time: 0,
       start: 0,
       isOn: false
     });
+
+    window.localStorage.setItem("gameTiles", gameTiles);
+  }
+
+  saveGameState() {
+    window.localStorage.setItem("gameState", JSON.stringify(this.state));
   }
 
   render() {
@@ -253,8 +253,9 @@ class App extends Component {
             style={{
               background: "#CF145B"
             }}
+            onClick={event => this.saveGameState(event)}
           >
-            AUTO SAVE
+            SAVE
           </button>
         </div>
         {/* Third Block */}
