@@ -1,6 +1,6 @@
 {
-  "short_name": "Nuble",
-  "name": "Developed by Sumit Jangir",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",
