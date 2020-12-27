@@ -107,11 +107,11 @@ class App extends Component {
     }
   };
 
-  showRightBox() {
+  showRightBox = () => {
     this.setState({
       showRightSideBox: !this.state.showRightSideBox,
     });
-  }
+  };
 
   startTimer() {
     this.setState({
