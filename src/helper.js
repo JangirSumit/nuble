@@ -84,7 +84,7 @@ function changePositionWithBlank(list, position, matSize) {
     [i - 1, j],
     [i, j - 1],
     [i + 1, j],
-    [i, j + 1]
+    [i, j + 1],
   ];
 
   for (let index = 0; index < PossiblePositions.length; index++) {
@@ -128,5 +128,5 @@ export {
   matrixToList,
   millisToMinutesAndSeconds,
   changePositionWithBlank,
-  checkGameCompleted
+  checkGameCompleted,
 };

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Tile from "./tile";
+import Tile from "./Tile";
 
 class Tiles extends Component {
   handleTileClick(val) {
@@ -11,7 +11,7 @@ class Tiles extends Component {
   render() {
     return (
       <>
-        {this.props.tiles.map(t => {
+        {this.props.tiles.map((t) => {
           return (
             <Tile
               t={t}

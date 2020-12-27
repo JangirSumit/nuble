@@ -3,15 +3,16 @@ import "./App.css";
 import {
   shuffle,
   calculate2dPosition,
-  millisToMinutesAndSeconds,
   changePositionWithBlank,
-  checkGameCompleted
+  checkGameCompleted,
 } from "./helper";
-import Tiles from "./components/tiles";
-import move from "./content/move.png";
-import hourglass from "./content/hourglass.png";
-import nuble from "./content/nuble-logo.png";
-import menuIcon from "./content/menu.png";
+import Timer from "./components/Timer";
+import Moves from "./components/Moves";
+import Footer from "./components/Footer";
+import Body from "./components/Body";
+import Buttons from "./components/Buttons";
+import RightBox from "./components/RightBox";
+import LeftBox from "./components/LeftBox";
 
 class App extends Component {
   constructor() {
@@ -25,25 +26,34 @@ class App extends Component {
       start: 0,
       isOn: false,
       showRightSideBox: true,
-      gameTiles: gameTiles
+      gameTiles: gameTiles,
     };
+  }
+
+  componentDidMount() {
+    const gameState = window.localStorage.getItem("gameState");
+
+    if (gameState) {
+      this.setState({ ...JSON.parse(gameState) });
+    }
   }
 
   getTiles(gameTiles) {
     let items = [
-      ...Array(parseInt(gameTiles) * parseInt(gameTiles) - 1).keys()
+      ...Array(parseInt(gameTiles) * parseInt(gameTiles) - 1).keys(),
     ];
     items = shuffle(items);
-    let tiles = [...items.map(t => t + 1), null];
+    let tiles = [...items.map((t) => t + 1), null];
     return tiles;
   }
 
-  handleNewGame() {
+  handleNewGame = () => {
     alert("Game will be lost after this.");
+    window.localStorage.removeItem("gameState");
     window.location.reload();
-  }
+  };
 
-  handleUndo() {
+  handleUndo = () => {
     if (this.state.moves && this.state.moves.length) {
       let gameStates = this.state.gameState;
       gameStates.pop();
@@ -52,13 +62,13 @@ class App extends Component {
       moves.pop();
 
       this.setState({
-        gameState: gameStates,
-        moves: moves
+        gameState: [...gameStates],
+        moves: [...moves],
       });
     }
-  }
+  };
 
-  handleTileClick(position, val) {
+  handleTileClick = (position, val) => {
     let currentPosition = calculate2dPosition(this.state.gameTiles, position);
     if (currentPosition[0] !== -1 && currentPosition[1] !== -1) {
       let currentGameState = this.state.gameState[
@@ -78,13 +88,13 @@ class App extends Component {
         {
           from: currentPosition,
           to: calculate2dPosition(4, newGameState.indexOf(val)),
-          val: val
-        }
+          val: val,
+        },
       ];
 
       this.setState({
         moves: currentMoves,
-        gameState: newStates
+        gameState: newStates,
       });
 
       if (!this.state.isOn) {
@@ -95,30 +105,24 @@ class App extends Component {
         alert("Game Over!!!!!");
       }
     }
-  }
+  };
 
   showRightBox() {
-    if (this.state.showRightSideBox) {
-      this.setState({
-        showRightSideBox: false
-      });
-    } else {
-      this.setState({
-        showRightSideBox: true
-      });
-    }
+    this.setState({
+      showRightSideBox: !this.state.showRightSideBox,
+    });
   }
 
   startTimer() {
     this.setState({
       time: this.state.time,
       start: Date.now() - this.state.time,
-      isOn: true
+      isOn: true,
     });
     this.timer = setInterval(
       () =>
         this.setState({
-          time: Date.now() - this.state.start
+          time: Date.now() - this.state.start,
         }),
       1
     );
@@ -131,10 +135,8 @@ class App extends Component {
     this.setState({ time: 0 });
   }
 
-  onFooterButtonClick(button) {
+  onFooterButtonClick = (button) => {
     let gameTiles = 4;
-    let items = [];
-    let tiles = [];
 
     switch (button) {
       case "EASY":
@@ -157,174 +159,42 @@ class App extends Component {
       moves: [],
       time: 0,
       start: 0,
-      isOn: false
+      isOn: false,
     });
 
     window.localStorage.setItem("gameTiles", gameTiles);
-  }
+  };
 
-  saveGameState() {
+  saveGameState = () => {
     window.localStorage.setItem("gameState", JSON.stringify(this.state));
-  }
+  };
 
   render() {
     return (
       <div className="App">
         {/* Top Header */}
-        <div
-          style={{
-            background: "#F4B323",
-            height: "80px",
-            width: "100%",
-            textAlign: "center",
-            fontWeight: "bold",
-            fontSize: "30px",
-            color: "#fff",
-            display: "inline-block"
-          }}
-        >
-          <img
-            alt="nuble"
-            src={nuble}
-            style={{
-              width: "64px",
-              height: "64px",
-              paddingTop: "10px",
-              verticalAlign: "middle",
-              paddingRight: "10px"
-            }}
-          ></img>
-          <span style={{ verticalAlign: "middle" }}>NUBLE</span>
-          <img
-            alt="nuble"
-            src={menuIcon}
-            className="mobile-menu"
-            onClick={this.showRightBox.bind(this)}
-            style={{
-              width: "45px",
-              height: "40px",
-              marginTop: "20px",
-              verticalAlign: "middle",
-              marginRight: "10px",
-              float: "right",
-              display: "none"
-            }}
-          ></img>
-        </div>
+        <LeftBox showRightBox={this.showRightBox} />
         {/* First Block */}
         <div className="left-side-box">
-          <div className="timer-moves">
-            <img
-              alt="move"
-              src={move}
-              style={{ height: "16px", width: "18px", paddingRight: "5px" }}
-            />
-            <span>MOVES: {this.state.moves.length}</span>
-          </div>
-          <div className="timer-moves">
-            <img
-              alt="move"
-              src={hourglass}
-              style={{ height: "16px", width: "18px", paddingRight: "5px" }}
-            />
-            TIME: {millisToMinutesAndSeconds(this.state.time)}
-          </div>
+          <Moves moves={this.state.moves.length} />
+          <Timer time={this.state.time} />
           <br></br>
-          <button
-            className="left-side-box-buttons"
-            onClick={this.handleUndo.bind(this)}
-            style={{
-              background: "#F7941D"
-            }}
-          >
-            UNDO
-          </button>
-          <button
-            className="left-side-box-buttons"
-            onClick={this.handleNewGame.bind(this)}
-            style={{
-              background: "#8CC63E"
-            }}
-          >
-            NEW GAME
-          </button>
-          <button
-            className="left-side-box-buttons"
-            style={{
-              background: "#CF145B"
-            }}
-            onClick={event => this.saveGameState(event)}
-          >
-            SAVE
-          </button>
+          <Buttons
+            handleUndo={this.handleUndo}
+            handleNewGame={this.handleNewGame}
+            saveGameState={this.saveGameState}
+          />
         </div>
         {/* Third Block */}
-        {this.state.showRightSideBox ? (
-          <div className="right-side-box">
-            <h3 style={{ color: "#2582BF" }}>Your Moves</h3>
-            {this.state.moves.map((m, i) => {
-              return (
-                <p key={i} style={{ fontSize: "16px", fontWeight: "bold" }}>
-                  {i + 1}
-                  {"."} ({m.val}){":"} [{m.from[0] + 1}
-                  {" , "}
-                  {m.from[1] + 1}]{"->"} [{m.to[0] + 1}
-                  {" , "}
-                  {m.to[1] + 1}]
-                </p>
-              );
-            })}
-          </div>
-        ) : (
-          ""
-        )}
-
+        {this.state.showRightSideBox && <RightBox moves={this.state.moves} />}
         {/* Center block */}
-        <div align="center">
-          {/* Second Block */}
-          <div className="center">
-            {
-              <Tiles
-                tiles={this.state.gameState[this.state.gameState.length - 1]}
-                handleTileClick={this.handleTileClick.bind(this)}
-                gameTiles={this.state.gameTiles}
-              />
-            }
-          </div>
-        </div>
+        <Body
+          tiles={this.state.gameState[this.state.gameState.length - 1]}
+          handleTileClick={this.handleTileClick}
+          gameTiles={this.state.gameTiles}
+        />
         {/* Bottom block */}
-        <div className="footer" align="center">
-          <p
-            style={{
-              color: "#2584B2",
-              textTransform: "uppercase",
-              fontWeight: "bold"
-            }}
-          >
-            Difficulty level
-          </p>
-          <button
-            className="footer-buttons"
-            onClick={event => this.onFooterButtonClick("EASY")}
-          >
-            {" "}
-            EASY{" "}
-          </button>
-          <button
-            className="footer-buttons"
-            onClick={event => this.onFooterButtonClick("MEDIUM")}
-          >
-            {" "}
-            MEDIUM{" "}
-          </button>
-          <button
-            className="footer-buttons"
-            onClick={event => this.onFooterButtonClick("HARD")}
-          >
-            {" "}
-            HARD{" "}
-          </button>
-        </div>
+        <Footer onFooterButtonClick={this.onFooterButtonClick} />
       </div>
     );
   }

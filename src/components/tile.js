@@ -19,4 +19,4 @@ class Tile extends Component {
   }
 }
 
-export default Tile;
+export default React.memo(Tile);
